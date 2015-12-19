@@ -8,6 +8,8 @@ v1.0 - initial version
 
 
 **Usage**
+
+-- Need to download bootstrap
 class AppController extends Controller {
     public $components = array('QuickEmailer.Emailer');
 }
@@ -17,10 +19,11 @@ class EmailerController extends AppController
 {
     public function index()
     {
-        $this->Emailer->GetEmailer($this);
+        $this->Emailer->GetEmailer($this, 'advance'); //or basic
     }
 
 }
+
 
 default.ctp (using bootstrap)
 		echo $this->Html->css('bootstrap.min');
