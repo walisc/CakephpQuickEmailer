@@ -1,3 +1,4 @@
+<? echo $this->Html->script('QuickEmailer.ckeditor/ckeditor'); ?>
 <h4>
     Compose Email
 </h4>
@@ -12,7 +13,10 @@
 
         <?php echo $this->Form->input('subject:',array('type' => 'text', 'class' =>'form-control', 'label' => 'Subject:' )); ?>
 
-        <?php echo $this->Form->input('body:',array('type' => 'textarea', 'class' =>'form-control', 'label' => 'Content' )); ?>
+        <?php echo $this->Form->input('body:',array('type' => 'textarea', 'class' =>'form-control', 'label' => 'Content', 'id'=>'advance_email_editor' )); ?>
+        <script type="text/javascript">
+            CKEDITOR.replace('advance_email_editor');
+        </script>
     <div>
 </div>
 <br>
