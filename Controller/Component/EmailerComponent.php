@@ -12,7 +12,7 @@ App::uses('View', 'View');
 class EmailerComponent extends Component
 {
 
-    public function GetEmailer($parent)
+    public function GetEmailer($parent, $type='Basic')
     {
        $parent->render('QuickEmailer.Emailer/emailer_layout');
     }
