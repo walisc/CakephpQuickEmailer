@@ -15,6 +15,15 @@
         <?php echo $this->Form->input('body:',array('type' => 'textarea', 'class' =>'form-control', 'label' => 'Content' )); ?>
     <div>
 </div>
+<br>
+
+<div class="btn-group pull-right" >
+
+    <button class="btn btn-default" type="button">Save as Template</button>
+    <button class="btn btn-default" type="button">Save as Draft</button>
+    <button class="btn btn-primary" type="button">Send Now</button>
+
+</div>
 
 
 <?php echo $this->Form->end(); ?>
