@@ -11,11 +11,4 @@ App::uses('View', 'View');
 
 class EmailerComponent extends Component
 {
-
-    public function GetEmailer($parent, $type='basic')
-    {
-       $parent->set(array('type' => $type));
-       $parent->render('QuickEmailer.Emailer/emailer_layout');
-    }
-
 }
