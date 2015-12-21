@@ -1,7 +1,7 @@
 <h4>
     Compose Email
 </h4>
-<?php echo $this->Form->create('EmailMessage'); ?>
+<?php echo $this->Form->create('EmailMessage', array('id' => 'quick_emailer_basic_page')); ?>
 
 <div class="form-group">
     <div class="col-sm-10">
@@ -19,9 +19,23 @@
 
 <div class="btn-group pull-right" >
 
-    <button class="btn btn-default" type="button">Save as Template</button>
-    <button class="btn btn-default" type="button">Save as Draft</button>
-    <button class="btn btn-primary" type="button">Send Now</button>
+    <?php echo $this->Form->input('Save as Template', array('type' => 'submit', 'id' => 'quick_emailer_basic_st','div' => false, 'label' => false, 'class' => 'btn btn-default'));?>
+    <?php echo $this->Form->input('Save as Draft', array('type' => 'submit', 'div' => false, 'label' => false, 'class' => 'btn btn-default')) ?>
+    <?php echo $this->Form->input('Send Now', array('type' => 'submit', 'id' => 'quick_emailer_basic_send2', 'div' => false, 'label' => false, 'class' => 'btn btn-primary"')) ?>
+
+    <?php
+    $this->Helpers->load('QuickEmailer.QuickEmailerUtilities');
+
+    echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page',
+        'quick_emailer_basic',
+        array('controller' => 'EventAttendee', 'action' => 'view'));
+
+    echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page',
+        'quick_emailer_basic_send',
+        array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_send')); ?>
+
+
+
 
 </div>
 
