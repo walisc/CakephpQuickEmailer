@@ -19,19 +19,21 @@
 
 <div class="btn-group pull-right" >
 
-    <?php echo $this->Form->input('Save as Template', array('type' => 'submit', 'id' => 'quick_emailer_basic_st','div' => false, 'label' => false, 'class' => 'btn btn-default'));?>
-    <?php echo $this->Form->input('Save as Draft', array('type' => 'submit', 'div' => false, 'label' => false, 'class' => 'btn btn-default')) ?>
-    <?php echo $this->Form->input('Send Now', array('type' => 'submit', 'id' => 'quick_emailer_basic_send2', 'div' => false, 'label' => false, 'class' => 'btn btn-primary"')) ?>
+    <!-- TODO: Refactor id names -->
+    <button class="btn btn-default" id="qe_basic_save_tmplt"  type="button">Save as Template</button>
+    <button class="btn btn-default" id="qe_basic_save_draft"  type="button">Save as Draft</button>
+    <button class="btn btn-primary" id="qe_basic_send" type="button">Send Now</button>
+
 
     <?php
     $this->Helpers->load('QuickEmailer.QuickEmailerUtilities');
 
-    echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page',
-        'quick_emailer_basic',
-        array('controller' => 'EventAttendee', 'action' => 'view'));
+    echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page33',
+        'qe_basic_save_draft',
+        array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_save_draft'));
 
     echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page',
-        'quick_emailer_basic_send',
+        'qe_basic_send',
         array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_send')); ?>
 
 

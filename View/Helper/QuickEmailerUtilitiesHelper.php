@@ -8,12 +8,14 @@ class QuickEmailerUtilitiesHelper extends AppHelper
 
     public function SetPostURL($form_id, $button_id, $url)
     {
+        $data = $this->Js->get('#'.$form_id)->serializeForm(array('isForm' => true, 'inline' => true));
+
         $this->Js->get('#'. $button_id)->event('click',
             $this->Js->request(
                 $url,
                 array(
                     'success' => 'location.reload();',
-                    'data' => $this->Js->get('#'.$form_id)->serializeForm(array('isForm' => true, 'inline' => true)),
+                    'data' => $data,
                     'async' => true,
                     'dataExpression'=>true,
                     'method' => 'POST'
