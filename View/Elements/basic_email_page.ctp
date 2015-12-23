@@ -28,13 +28,19 @@
     <?php
     $this->Helpers->load('QuickEmailer.QuickEmailerUtilities');
 
-    echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page33',
+    echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page',
         'qe_basic_save_draft',
         array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_save_draft'));
 
     echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page',
+        'qe_basic_save_tmplt',
+        array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_save_template'));
+
+    echo $this->QuickEmailerUtilities->SetPostURL('quick_emailer_basic_page',
         'qe_basic_send',
         array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_send')); ?>
+
+
 
 
 
