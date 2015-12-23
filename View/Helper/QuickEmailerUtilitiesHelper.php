@@ -25,4 +25,8 @@ class QuickEmailerUtilitiesHelper extends AppHelper
 
         return $this->Js->writeBuffer();
     }
+
+    public $BasicEmailFormID = "qe_basic_page_form";
+
+
 }
