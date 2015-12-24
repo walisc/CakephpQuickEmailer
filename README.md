@@ -9,22 +9,20 @@ v1.0 - initial version
 
 **Usage**
 
--- Need to download bootstrap
 class AppController extends Controller {
-    public $components = array('QuickEmailer.Emailer');
+        public $helpers = array('QuickEmailer.QuickEmailerUI'); // helper to access graphical elements
+        public $components = array('QuickEmailer.QuickEmailerAPI'); // Main API to access most methods
 }
 
+-- Using the QuickEMailer UI
 
-class EmailerController extends AppController
-{
-    public function index()
-    {
-        $this->Emailer->GetEmailer($this, 'advance'); //or basic
-    }
+- In whichever view:-
+echo $this->QuickEmailerUI->GetEmailer('basic'); //or advance, to have the WSGYI textbox
 
-}
+-- Using the QuickEmailer API
 
 
+-- Need to download bootstrap
 default.ctp (using bootstrap)
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('bootstrap-theme.min');
