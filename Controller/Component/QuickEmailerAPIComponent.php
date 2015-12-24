@@ -11,7 +11,7 @@ App::uses('View', 'View');
 
 class QuickEmailerAPIComponent extends Component
 {
-    public $components = array('QuickEmailer.DALComponent');
+    public $components = array('QuickEmailer.DAL');
 
     public function SendEmail()
     {
@@ -23,8 +23,10 @@ class QuickEmailerAPIComponent extends Component
 
     }
 
-    public function SaveAsTemplate()
+    public function SaveAsTemplate($template_name, $template_body)
     {
+        //do name and body checks
+        $this->DAL->SaveTemplate($template_name, $template_body);
 
     }
 

@@ -23,4 +23,9 @@ class EmailController extends AppController
     {
     }
 
+    public function ProcessSaveAsTemplate()
+    {
+        $this->QuickEmailerAPI->SaveAsTemplate("chido", "<h1>test</h1>");
+    }
+
 }
