@@ -2,3 +2,18 @@ Issue setting up
 
 -> Get helper to be picked up
 -- Problem was with not instantiating it right. Correct way public $helpers = array('QuickEmailer.QuickEmailerUI'); It's not a name value instantiating
+
+-> Loading plugin routes
+
+from lib/Cake/Core/CakePlugin.php
+ * Examples:
+ *
+ * 	`CakePlugin::load('DebugKit')` will load the DebugKit plugin and will not load any bootstrap nor route files
+ *	`CakePlugin::load('DebugKit', array('bootstrap' => true, 'routes' => true))` will load the bootstrap.php and routes.php files
+ * 	`CakePlugin::load('DebugKit', array('bootstrap' => false, 'routes' => true))` will load routes.php file but not bootstrap.php
+ * 	`CakePlugin::load('DebugKit', array('bootstrap' => array('config1', 'config2')))` will load config1.php and config2.php files
+ *	`CakePlugin::load('DebugKit', array('bootstrap' => 'aCallableMethod'))` will run the aCallableMethod function to initialize it
+
+ if 'routes' => true is not set it wont work
+
+--- However the thing that wasnt working is the camel case settings. the plugin QuickEmailer -> quick_emailer in url
