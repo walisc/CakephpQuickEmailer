@@ -33,7 +33,7 @@
 
     echo $this->QuickEmailerUtilities->SetPostURL( $this->QuickEmailerUtilities->BasicEmailFormID,
         'qe_basic_save_tmplt',
-        array('plugin' => 'quick_emailer', 'controller' => 'Email', 'action' => 'process_save_template'));
+        array('plugin' => 'quick_emailer', 'controller' => 'Email', 'action' => 'ProcessSaveAsTemplate'));
 
     echo $this->QuickEmailerUtilities->SetPostURL( $this->QuickEmailerUtilities->BasicEmailFormID,
         'qe_basic_send',
