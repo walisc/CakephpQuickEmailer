@@ -29,15 +29,15 @@
 
     echo $this->QuickEmailerUtilities->SetPostURL( $this->QuickEmailerUtilities->BasicEmailFormID,
         'qe_basic_save_draft',
-        array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_save_draft'));
+        array('plugin' => 'quick_emailer', 'controller' => 'Email', 'action' => 'process_save_draft'));
 
     echo $this->QuickEmailerUtilities->SetPostURL( $this->QuickEmailerUtilities->BasicEmailFormID,
         'qe_basic_save_tmplt',
-        array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_save_template'));
+        array('plugin' => 'quick_emailer', 'controller' => 'Email', 'action' => 'process_save_template'));
 
     echo $this->QuickEmailerUtilities->SetPostURL( $this->QuickEmailerUtilities->BasicEmailFormID,
         'qe_basic_send',
-        array('plugin' => 'QuickEmailer', 'controller' => 'Email', 'action' => 'process_send')); ?>
+        array('plugin' => 'quick_emailer', 'controller' => 'Email', 'action' => 'ProcessSend')); ?>
 
 
 

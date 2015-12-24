@@ -19,7 +19,7 @@ App::uses('AppController', 'Controller');
  */
 class EmailController extends AppController
 {
-    public function process_send()
+    public function ProcessSend()
     {
     }
 
