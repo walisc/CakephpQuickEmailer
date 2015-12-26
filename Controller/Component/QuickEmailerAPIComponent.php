@@ -26,7 +26,16 @@ class QuickEmailerAPIComponent extends Component
     public function SaveAsTemplate($template_name, $template_body)
     {
         //do name and body checks
-        $this->DAL->SaveTemplate($template_name, $template_body);
+        //$this->DAL->SaveTemplate($template_name, $template_body);
+        return $this->CreateProcessingResponse("Failed", "this failed");
+    }
+
+    private function CreateProcessingResponse($status, $message) //status - failed/passed. $response_function - reload/info Modal/flash/redrect/null
+    {
+        if ($status == "Failed")
+        {
+            return new CakeResponse(array('body'=> json_encode(array('message_content' => $message, 'status_message'=> $status, 'response_function'=>'show_modal')),'status'=>200));
+        }
 
     }
 

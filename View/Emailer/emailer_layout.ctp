@@ -21,3 +21,5 @@
         </div>
     </div>
 </div>
+
+<?php echo $this->QuickEmailerUtilities->CreateErrorModal(); ?>

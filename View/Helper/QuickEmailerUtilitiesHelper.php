@@ -14,7 +14,16 @@ class QuickEmailerUtilitiesHelper extends AppHelper
             $this->Js->request(
                 $url,
                 array(
-                    'success' => 'location.reload();',
+                    'success' => '
+                    parsed_data = JSON.parse(data)
+
+                    if (parsed_data.status_message == "Failed")
+                    {
+                        if (parsed_data.response_function == "show_modal")
+                        {
+                            $("#qe_error_model").modal("show");
+                        }
+                    }',
                     'data' => $data,
                     'async' => true,
                     'dataExpression'=>true,
@@ -26,7 +35,32 @@ class QuickEmailerUtilitiesHelper extends AppHelper
         return $this->Js->writeBuffer();
     }
 
+    public function CreateErrorModal()
+    {
+
+        $modal_error_content = '<div class="modal fade" id="qe_error_model" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
+                        <h4 class="modal-title" id="myModalLabel">Error Occured</h4>
+                    </div>
+                    <div class="modal-body">';
+
+        $modal_error_content .= '<p>There is an error occured</p>';
+        $modal_error_content .= '</div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+            </div>';
+
+        return $modal_error_content;
+
+    }
+
+
     public $BasicEmailFormID = "qe_basic_page_form";
 
-
 }
+
