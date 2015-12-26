@@ -22,7 +22,7 @@ echo $this->QuickEmailerUI->GetEmailer('basic'); //or advance, to have the WSGYI
 -- Using the QuickEmailer API
 
 
--- Need to download bootstrap
+-- Need to download bootstrap, and jquery
 default.ctp (using bootstrap)
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('bootstrap-theme.min');
