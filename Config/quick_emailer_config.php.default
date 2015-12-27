@@ -1,0 +1,26 @@
+
+$config["dbconfig"] = 'default';
+
+$config["email_accounts"] = array(
+    "default" => array(
+        'name' => '',
+        'host' => '',
+        'port' => 465,
+        'username' => '',
+        'password' => '',
+        'transport' => '',
+        'from' => array('' => ''),
+        'tls' =>
+    ),
+    "second_email" => array(
+            'name' => '',
+            'host' => '',
+            'port' => 465,
+            'username' => '',
+            'password' => '',
+            'transport' => '',
+            'from' => array('' => ''),
+            'tls' =>
+        )
+);
+
