@@ -8,6 +8,10 @@ v1.0 - initial version
 
 
 **Usage**
+Rename the quick_emailer_config.php.default to quick_emailer.config.php. Add the appropriate entries
+
+Config/bootstrap.php
+CakePlugin::load('QuickEmailer', array('bootstrap' => 'quick_emailer_config'));
 
 class AppController extends Controller {
         public $helpers = array('QuickEmailer.QuickEmailerUI'); // helper to access graphical elements
