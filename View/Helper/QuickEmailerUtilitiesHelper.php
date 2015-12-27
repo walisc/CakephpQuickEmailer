@@ -21,7 +21,9 @@ class QuickEmailerUtilitiesHelper extends AppHelper
                     {
                         if (parsed_data.response_function == "show_modal")
                         {
-                            $("#qe_error_model").modal("show");
+                            $("#qe_response_model #qe_response_modal_title").html(parsed_data.message_summary);
+                            $("#qe_response_model #qe_response_modal_content").html(parsed_data.message_content);
+                            $("#qe_response_model").modal("show");
                         }
                     }',
                     'data' => $data,
@@ -38,16 +40,16 @@ class QuickEmailerUtilitiesHelper extends AppHelper
     public function CreateErrorModal()
     {
 
-        $modal_error_content = '<div class="modal fade" id="qe_error_model" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        $modal_error_content = '<div class="modal fade" id="qe_response_model" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
-                        <h4 class="modal-title" id="myModalLabel">Error Occured</h4>
+                        <h4 class="modal-title" id="qe_response_modal_title"></h4>
                     </div>
                     <div class="modal-body">';
 
-        $modal_error_content .= '<p>There is an error occured</p>';
+        $modal_error_content .= '<p id="qe_response_modal_content"></p>';
         $modal_error_content .= '</div>
                     <div class="modal-footer">
                     </div>

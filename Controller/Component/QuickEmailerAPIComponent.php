@@ -8,10 +8,15 @@
 
 App::uses('Component', 'Controller');
 App::uses('View', 'View');
+App::uses('QuickEmailerResponseHandler', 'Plugin/QuickEmailer/Lib');
+App::uses('QuickEmailerErrorDefinitions', 'Plugin/QuickEmailer/Lib');
+
+class_alias('QuickEmailerResponseHandler', 'QERes');
 
 class QuickEmailerAPIComponent extends Component
 {
     public $components = array('QuickEmailer.DAL');
+
 
     public function SendEmail()
     {
@@ -27,15 +32,17 @@ class QuickEmailerAPIComponent extends Component
     {
         //do name and body checks
         //$this->DAL->SaveTemplate($template_name, $template_body);
-        return $this->CreateProcessingResponse("Failed", "this failed");
+        return QERes::RESPOND(QERes::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
     }
 
-    private function CreateProcessingResponse($status, $message) //status - failed/passed. $response_function - reload/info Modal/flash/redrect/null
+    private function CreateProcessingResponse($status, $message_summary, $message_content, $response_function) //status - failed/passed. $response_function - reload/info Modal/flash/redrect/null
     {
-        if ($status == "Failed")
-        {
-            return new CakeResponse(array('body'=> json_encode(array('message_content' => $message, 'status_message'=> $status, 'response_function'=>'show_modal')),'status'=>200));
-        }
+
+            return new CakeResponse(array('body'=> json_encode(array('message_summary' => $message_summary,
+                'message_content' => $message_content,
+                'status_message'=> $status,
+                'response_function'=>$response_function)),'status'=>200));
+
 
     }
 
