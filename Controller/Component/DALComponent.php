@@ -13,8 +13,7 @@ class DALComponent extends QuickEmailerBaseComponent
 {
     public function load()
     {
-
-        if (Configure::read('qe.dbconfig'))
+        if (Configure::check('qe.dbconfig'))
         {
 
         }

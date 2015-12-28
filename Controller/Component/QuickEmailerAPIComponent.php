@@ -30,7 +30,7 @@ class QuickEmailerAPIComponent extends QuickEmailerBaseComponent
             return $checks;
         }
         //do name and body checks
-        //$this->DAL->SaveTemplate($template_name, $template_body);
+        $this->DAL->SaveTemplate($template_name, $template_body);
 
     }
 
