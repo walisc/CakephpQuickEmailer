@@ -6,14 +6,26 @@
  * Time: 9:38 PM
  */
 
-App::uses('Component', 'Controller');
+App::uses('QuickEmailerBaseComponent', 'Plugin/QuickEmailer/Controller/Component');
 
-class DALComponent extends Component
+
+class DALComponent extends QuickEmailerBaseComponent
 {
-    public function initialize(Controller $controller)
+    public function load()
     {
-        $this->Templates = ClassRegistry::init('Templates');
+
+        if (Configure::read('qe.dbconfig'))
+        {
+
+        }
+        else
+        {
+            return QEResp::RESPOND(QEResp::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
+        }
+
     }
+
+
 
     public function SaveTemplate($template_name, $template_body)
     {
