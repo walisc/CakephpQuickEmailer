@@ -11,6 +11,7 @@ App::uses('ConnectionManager', 'Model');
 
 class DALComponent extends QuickEmailerBaseComponent
 {
+
     public function load()
     {
         if (Cache::read('qe.dbconfig_' . hash("md5", "qe_dbconfig"), QEResp::QUICK_EMAILER_CACHE ))
@@ -29,6 +30,8 @@ class DALComponent extends QuickEmailerBaseComponent
                 $datasource = ConnectionManager::getDataSource(Configure::read('qe.dbconfig'));
 
                 if ($datasource->connected) {
+
+                    $this->CheckTables($datasource);
                     Cache::write('qe.dbconfig_' . hash("md5", "qe_dbconfig"), true, QEResp::QUICK_EMAILER_CACHE );
                     return true;
                 }
@@ -50,7 +53,22 @@ class DALComponent extends QuickEmailerBaseComponent
     }
 
 
+    private function CheckTables($datasource)
+    {
+        $quickEmailerTable = array('Templates', 'Emails');
+        $availableTables = $datasource->listSources();
 
+        foreach ($quickEmailerTable as $table)
+        {
+            if(!in_array($table, $availableTables) )
+            {
+                echo 'Creating new one';
+                //TODO: log creating new one
+            }
+        }
+
+
+    }
     public function SaveTemplate($template_name, $template_body)
     {
         $newTemplate = array(
