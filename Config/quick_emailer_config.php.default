@@ -24,3 +24,11 @@ $config["email_accounts"] = array(
         )
 );
 
+App::uses('QuickEmailerResponseHandler', 'Plugin/QuickEmailer/Lib');
+
+Cache::config(QuickEmailerResponseHandler::QUICK_EMAILER_CACHE, array(
+    'engine' => 'File',
+    'duration' => '+999 days',
+    'path' => CACHE . QuickEmailerResponseHandler::QUICK_EMAILER_CACHE . DS,
+));
+
