@@ -13,8 +13,30 @@ class DALComponent extends QuickEmailerBaseComponent
 {
     public function load()
     {
+        if (Cache::read('qe.dbconfig_' . hash("md5", "qe_dbconfig")))
+        {
+            return True;
+        }
+
         if (Configure::check('qe.dbconfig'))
         {
+            if (!file_exists(APP . 'Config' . DS . 'database.php'))
+            {
+                return QEResp::RESPOND(QEResp::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
+            }
+            try
+            {
+                $datasource = ConnectionManager::getDataSource(Configure::read('qe.dbconfig'));
+
+                if ($datasource->connected) {
+                    Cache::write('qe.dbconfig_' . hash("md5", "qe_dbconfig"), true);
+                }
+                return QEResp::RESPOND(QEResp::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
+            }
+            Catch (MissingDatasourceException $e)
+            {
+                return QEResp::RESPOND(QEResp::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
+            }
 
         }
         else
