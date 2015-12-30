@@ -15,7 +15,7 @@ class DALComponent extends QuickEmailerBaseComponent
     {
         if (Cache::read('qe.dbconfig_' . hash("md5", "qe_dbconfig"), QEResp::QUICK_EMAILER_CACHE ))
         {
-            return True;
+            return true;
         }
 
         if (Configure::check('qe.dbconfig'))
@@ -30,7 +30,7 @@ class DALComponent extends QuickEmailerBaseComponent
 
                 if ($datasource->connected) {
                     Cache::write('qe.dbconfig_' . hash("md5", "qe_dbconfig"), true, QEResp::QUICK_EMAILER_CACHE );
-                    return True;
+                    return true;
                 }
                 return QEResp::RESPOND(QEResp::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
             }
