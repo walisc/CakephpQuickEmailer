@@ -8,6 +8,7 @@
 
 App::uses('QuickEmailerBaseComponent', 'Plugin/QuickEmailer/Controller/Component');
 App::uses('ConnectionManager', 'Model');
+App::uses('Model','Model');
 
 class DALComponent extends QuickEmailerBaseComponent
 {
@@ -63,6 +64,15 @@ class DALComponent extends QuickEmailerBaseComponent
             if(!in_array($table, $availableTables) )
             {
                 echo 'Creating new one';
+                $datasource->rawQuery("CREATE TABLE Persons
+                                    (
+                                    PersonID int,
+                                    LastName varchar(255),
+                                    FirstName varchar(255),
+                                    Address varchar(255),
+                                    City varchar(255)
+                                    );");
+
                 //TODO: log creating new one
             }
         }
