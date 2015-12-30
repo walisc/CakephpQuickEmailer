@@ -7,7 +7,7 @@
  */
 
 App::uses('QuickEmailerBaseComponent', 'Plugin/QuickEmailer/Controller/Component');
-
+App::uses('ConnectionManager', 'Model');
 
 class DALComponent extends QuickEmailerBaseComponent
 {
@@ -33,9 +33,11 @@ class DALComponent extends QuickEmailerBaseComponent
                 }
                 return QEResp::RESPOND(QEResp::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
             }
-            Catch (MissingDatasourceException $e)
+            Catch (Exception $e)
             {
-                return QEResp::RESPOND(QEResp::ERROR, QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED());
+                $excep_message = QuickEmailerResponseHandler::AddExceptionInfo(QuickEmailerErrorDefinitions::NO_DATABASE_CONFIGURED(),$e);
+                //TODO: Log errors
+                return QEResp::RESPOND(QEResp::ERROR, $excep_message);
             }
 
         }

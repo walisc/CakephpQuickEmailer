@@ -40,4 +40,13 @@ class QuickEmailerResponseHandler
         }
     }
 
+    public static function AddExceptionInfo($exceptionDefinition, $e)
+    {
+        $error_details = $exceptionDefinition;
+        $error_details["message_content"] .= sprintf("</br></br><p><strong>Exception Message</strong></p></br>%s</br></br><p><strong>Stace Trace</strong></p></br>%s",$e->getMessage(),$e->getTraceAsString());
+
+        return $error_details;
+    }
+
+
 }
