@@ -22,6 +22,11 @@ class QuickEmailerAPIComponent extends QuickEmailerBaseComponent
 
     }
 
+    public function ClearQuickEmailerCache()
+    {
+        Cache::clear(false, QuickEmailerResponseHandler::QUICK_EMAILER_CACHE);
+    }
+    
     public function SaveAsTemplate($template_name, $template_body)
     {
         $checks = $this->DAL->load();
