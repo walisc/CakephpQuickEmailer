@@ -48,5 +48,6 @@ class QuickEmailerResponseHandler
         return $error_details;
     }
 
+    const QUICK_EMAILER_CACHE = "quick_emaler_cache";
 
 }
